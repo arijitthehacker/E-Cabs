@@ -27,7 +27,7 @@ class Booking(models.Model):
     customer_phone_number = models.TextField()
 
     booking_start_date = models.DateField()
-    booking_end_date = models.DateField()
+    journey_date = models.DateField()
     booking_message = models.TextField()
 
     is_approved = models.BooleanField()

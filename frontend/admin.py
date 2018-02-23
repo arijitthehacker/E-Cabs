@@ -5,7 +5,7 @@ from frontend.models import Booking
 
 
 class BookingModelAdmin(admin.ModelAdmin):
-    list_display = ['customer_name', 'booking_start_date', 'booking_end_date', 'is_approved']
+    list_display = ['customer_name', 'booking_start_date', 'journey_date', 'is_approved']
     list_filter = ['is_approved']
     list_editable = ['is_approved']
     search_fields = ['customer_name']
@@ -18,7 +18,7 @@ class BookingModelAdmin(admin.ModelAdmin):
                 email_body = """Dear {},
     We are pleased to inform you that your booking has been approved. Booking Date: {}, Journey Date: {},
 Thanks
-""".format(booking.customer_name,booking.booking_start_date,booking.booking_end_date)
+""".format(booking.customer_name,booking.booking_start_date,booking.journey_date)
             else:
                 email_body = """Dear {},
     Unfortunately we do not have the capacity right now to accept your booking.

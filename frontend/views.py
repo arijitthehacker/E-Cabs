@@ -33,7 +33,7 @@ class NewBookingView(CreateView):
     model = Booking
     fields = [
         'customer_name', 'customer_email', 'customer_phone_number',
-        'booking_start_date', 'booking_end_date', 'booking_message'
+        'booking_start_date', 'journey_date', 'booking_message'
     ]
 
     template_name = 'new_booking.html'
