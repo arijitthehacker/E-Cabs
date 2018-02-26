@@ -6,9 +6,12 @@
     {% endif %}
 
     <h1>{{ object.name }}</h1>
-    <img src="{{ object.image.url }}" />
+	<center>
+    <img class ="image" src="{{ object.image.url }}" />
+	</center>
     <p>{{ object.description }}</p>
     <p>Rs. {{ object.daily_rent }} / hr</p>
 
     <a href="{% url 'new-booking' car_pk=object.pk %}">Book Now</a>
+
 {% endblock %}

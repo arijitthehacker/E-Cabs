@@ -1,9 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <ul>
+{% if request.user.is_authenticated %}
+<li>User: {{ user.get_username }}</li>
+
+
+<table class="table table-bordered">
 <h1>Book {{ car.name }}</h1>
 <form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
+	<table class="table table-striped table-hover table-bordered" border="1">
+    {{ form }}
+	</table>
     <input type="submit" name="" id="" value="Create Booking" />
 </form>
+</table>
+
+{% else %}
+<li><a href="{% url "login" %}">Login</a></li>
+<li><a href="{% url "user_registration"%}">Register Account</a>
+</li>
+{% endif %}
+</ul>
+
 {% endblock %}

@@ -1,9 +1,20 @@
 from django.views.generic import CreateView
 from django.views.generic import DetailView
 from django.views.generic import TemplateView
-
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, authenticate
 from frontend.models import Booking
 from frontend.models import Car
+from django.contrib.auth.forms import UserCreationForm
+from django.core.urlresolvers import reverse
+from django.views.generic import CreateView
+from django.contrib.auth.decorators import login_required
+
+class UserRegistrationView(CreateView):
+        form_class = UserCreationForm
+        template_name = 'user_registration.html'
+        def get_success_url(self):
+                return reverse('home')
 
 
 class HomeView(TemplateView):
@@ -27,7 +38,6 @@ class CarDetailsView(DetailView):
         ctx['booking_success'] = 'booking-success' in self.request.GET
 
         return ctx
-
 
 class NewBookingView(CreateView):
     model = Booking
@@ -64,3 +74,5 @@ class NewBookingView(CreateView):
         car_details_page_url = car.get_absolute_url()
 
         return '{}?booking-success=1'.format(car_details_page_url)
+
+
