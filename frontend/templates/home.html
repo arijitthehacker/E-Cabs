@@ -26,45 +26,38 @@
           <p class="text-white m-0">This call to action card is a great place to showcase some important information or display a clever tagline!</p>
         </div>
       </div>
-
-      <!-- Content Row -->
+<!--LIST GROUP-->
 {% for car in cars %}
-<table class="table">
-<td>
-      <div class="row">
-        <div class="col-md-4 mb-4">
-          <div id="card_col" class="card h-100">
-            <div class="card-body">
-              <h2 class="card-title">Card One</h2>
-              <p class="card-text">
+<div class="jumbotron">
+<div class="row">
+  <div class="col-sm-4"><h1 class="display-6">{{ car.name }}</h1><img class="image" src="{{ car.image.url }}" /></div>
+  <div class="col-sm-8"><br><br><br><br><br><br><br><br><strong>
+	<p class="lead">{{ car.description }}</p>
+	<hr class="my-4">
+	  <p><strong> Rs. {{ car.daily_rent }} / km</strong></p></div>
+	  <p class="lead">
+	    <a class="btn btn-primary btn-lg" href="{{ car.get_absolute_url }}" role="button">Book Now</a>
+	  </p>
+	</strong>
 
-	<div class="image">
-            <img src="{{ car.image.url }}" />
-	</div>
+</div>
+</div>
+{% endfor %}
 
-        </div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">More Info</a>
-            </div>
-          </div>
-        </div>
-</td>
-</table>
-     {% endfor %}
 
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+        <p class="m-0 text-center text-white">Copyright &copy; E-Cabs 2018</p>
       </div>
       <!-- /.container -->
     </footer>
 
-<!---Original-->
+<!---Original
 <ul class="car-list">
     {% for car in cars %}
-    <li class="car-list-item">
+
+    <li class="car-list-item">	
         <div class="image">
             <img src="{{ car.image.url }}" />
         </div>
@@ -77,4 +70,5 @@
     </li>
     {% endfor %}
 </ul>
+-->
 {% endblock %}

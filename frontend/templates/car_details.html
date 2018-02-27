@@ -5,6 +5,25 @@
     <em>You have successfully created a booking for this car. Someone from our staff will contact you shortly.</em>
     {% endif %}
 
+<div class="jumbotron">
+<div class="row">
+  <div class="col-sm-4"><h1 class="display-6">{{ object.name }}</h1><img class="image" src="{{ car.image.url }}" /></div>
+  <div class="col-sm-8"><br><br><br><br><br>
+	<p class="lead">{{ object.description }}</p>
+	<hr class="my-4">
+	  <p><strong> Rs. {{ object.daily_rent }} / km</strong></p>
+	  <p class="lead">
+	    <a class="btn btn-primary btn-lg" href="{% url 'new-booking' car_pk=object.pk %}" role="button">Book Now</a>
+	  </p>
+	</div>
+
+</div>
+
+  
+  
+  
+</div>
+<!-- Original 
     <h1>{{ object.name }}</h1>
 	<center>
     <img class ="image" src="{{ object.image.url }}" />
@@ -13,5 +32,5 @@
     <p>Rs. {{ object.daily_rent }} / hr</p>
 
     <a href="{% url 'new-booking' car_pk=object.pk %}">Book Now</a>
-
+-->
 {% endblock %}
