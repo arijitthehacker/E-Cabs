@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Our Cars</h1>
+
+<div class="container">
+
+      <!-- Heading Row -->
+      <div class="row my-4">
+        <div class="col-lg-8">
+          <img class="img-fluid rounded" src="http://placehold.it/900x400" alt="">
+        </div>
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-4">
+          <h1>Business Name or Tagline</h1>
+          <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!</p>
+          <a class="btn btn-primary btn-lg" href="#">Call to Action!</a>
+        </div>
+        <!-- /.col-md-4 -->
+      </div>
+      <!-- /.row -->
+
+      <!-- Call to Action Well -->
+      <div class="card text-white bg-secondary my-4 text-center">
+        <div class="card-body">
+          <p class="text-white m-0">This call to action card is a great place to showcase some important information or display a clever tagline!</p>
+        </div>
+      </div>
+<!--LIST GROUP-->
+{% for car in cars %}
+<div class="jumbotron">
+<div class="row">
+  <div class="col-sm-4"><h1 class="display-6">{{ car.name }}</h1><img class="image" src="{{ car.image.url }}" /></div>
+  <div class="col-sm-8"><br><br><br><br><br><br><br><br><strong>
+	<p class="lead">{{ car.description }}</p>
+	<hr class="my-4">
+	  <p><strong> Rs. {{ car.daily_rent }} / km</strong></p></div>
+	  <p class="lead">
+	    <a class="btn btn-primary btn-lg" href="{{ car.get_absolute_url }}" role="button">Book Now</a>
+	  </p>
+	</strong>
+
+</div>
+</div>
+{% endfor %}
+
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; E-Cabs 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+<!---Original
+<ul class="car-list">
+    {% for car in cars %}
+
+    <li class="car-list-item">	
+        <div class="image">
+            <img src="{{ car.image.url }}" />
+        </div>
+        <div class="name">
+            <a href="{{ car.get_absolute_url }}">{{ car.name }}</a>
+        </div>
+        <div class="rent">
+            Rs. {{ car.daily_rent }} / hr
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+-->
+{% endblock %}

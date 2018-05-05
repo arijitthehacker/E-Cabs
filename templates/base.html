@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.3/yeti/bootstrap.min.css" rel="stylesheet" integrity="sha384-xpQNcoacYF/4TKVs2uD3sXyaQYs49wxwEmeFNkOUgun6SLWdEbaCOv8hGaB9jLxt" crossorigin="anonymous">
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+
+    <title>Car Rental App</title>
+
+    <style type="text/css" media="all">
+    ul.nav {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    ul.nav li {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul.car-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    li.car-list-item {
+        margin: 20px 0 0 0;
+        padding: 0;
+    }
+
+    div.image, div.name, div.rent {
+        width: 120px;
+    }
+
+    div.image img {
+        width: 100%;
+        height: 100%;
+    }
+
+    div.name, div.rent {
+        border: 1px solid black;
+  
+    }
+
+    div.rent {
+        border-top: 0px;
+    }
+
+.image{
+		width: 500px;	
+	}
+
+    {% block extra_css %}
+    {% endblock %}
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">E-Cabs</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+{% if request.user.is_authenticated %}
+
+<li class="nav-item"></i><a class="nav-link" href="#"><i class="fa fa-user"></i> <b>User</b>: {{ user.get_username }}</a></li>
+
+<li class="nav-item"><a class="nav-link" href="{% url "logout" %}"><i class="fa fa-sign-out"></i> Logout</a></li>
+{% else %}
+<li class="nav-item"><a class="nav-link" href="{% url "login" %}"><i class="fa fa-users"></i> Login</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url "user_registration"%}"><i class="fa fa-sign-out"></i> Sign Up</a></li>
+</ul>
+{% endif %}
+
+  </div>
+</nav>
+
+    
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
